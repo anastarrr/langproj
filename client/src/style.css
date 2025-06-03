@@ -1,0 +1,18 @@
+body {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+}
+
+:root {
+    --c-primary-rgb: 50, 90, 50;
+    --c-primary-light-rgb: 100, 130, 110;
+    --c-primary-lightest-rgb: 130, 160, 140;
+
+    --c-button-rgb: 30, 30, 150;
+    --c-button-hover-rgb: 40, 50, 140;
+    --c-button-active-rgb: 40, 20, 110;
+    --c-button-border-rgb: var(--c-primary-light-rgb);
+}
