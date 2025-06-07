@@ -39,31 +39,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-router.get('/:userId', async (req, res) => {
-    const userId = req.params.userId;
-
-    if (!userId) {
-        return res.status(400).json({ error: 'userId обязателен' });
-    }
-
-    try {
-        const rows = await db.query(
-            `SELECT dictionary_id, question, answer, correct_answer, is_correct, created_at 
-       FROM test_results WHERE user_id = :userId ORDER BY created_at DESC`,
-            {
-                replacements: { userId },
-                type: QueryTypes.SELECT
-            }
-        );
-
-        res.json(rows);
-    } catch (err) {
-        console.error('Ошибка при получении результатов:', err);
-        res.status(500).json({ error: 'Ошибка при получении результатов' });
-    }
-});
-
 router.get('/summary/:userId', async (req, res) => {
     const userId = req.params.userId;
     try {

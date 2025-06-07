@@ -13,22 +13,18 @@ dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
-
+app.use(cookieParser());
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 }));
+
 app.use(express.json());
 app.use('/api/dictionaries', dictionaryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/test-results', testResultsRoutes);
-app.use(cookieParser());
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

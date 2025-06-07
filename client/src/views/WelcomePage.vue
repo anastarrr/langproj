@@ -1,6 +1,6 @@
 <script>
-import ButtonGeneral from "/src/components/ButtonGeneral.vue";
-import AccountLogIn from "/src/components/AccountLogIn.vue";
+import ButtonGeneral from "@/components/ButtonGeneral.vue";
+import AccountLogIn from "@/components/AccountLogin.vue";
 
 export default {
   components: {

@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c189dc-26e6-4bb0-ae94-5098fabfafa3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/RegistrationPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/RegistrationPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/WelcomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/WelcomePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/testResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/testResults.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <recent name="C:\Users\anast\WebstormProjects\langproj\src\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.npm dev">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -122,7 +123,7 @@
       <workItem from="1745929845995" duration="797000" />
       <workItem from="1746011838129" duration="1217000" />
       <workItem from="1746116513151" duration="23394000" />
-      <workItem from="1747341363250" duration="145725000" />
+      <workItem from="1747341363250" duration="150137000" />
     </task>
     <servers />
   </component>
