@@ -456,36 +456,62 @@ button:hover {
   background: #ccc;
   color: #777;
 }
-@media (max-width: 1024px) {
+.form-actions {
+   display: flex;
+   gap: 10px;
+   margin-top: 10px;
+ }
+
+@media (max-width: 800px) {
+  .add-word {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .add-word input, .add-btn {
+    width: 100%;
+  }
+  .my-dictionaries {
+    flex-direction: column;
+  }
   .left-panel, .right-panel {
     width: 100%;
-    margin-bottom: 20px;
+    height: auto;
+    max-height: none;
+    padding: 15px;
   }
-  input {
-    width: 90%;
-  }
-}
-@media (max-width: 600px) {
-  .panel-header {
+  ul li {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
-  .sort-btn {
-    margin-top: 5px;
-    align-self: flex-end;
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .actions button {
+    flex: 1;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  .card-container {
+    width: 90vw;
+    height: 180px;
+  }
+  .card .front, .card .back {
+    font-size: 22px;
+    padding: 15px;
   }
   input {
-    font-size: 14px;
-    padding: 6px;
+    margin-bottom: 15px;
   }
-  button {
-    width: 100%;
+  .add-btn {
+    padding: 12px 0;
+  }
+  .save-btn, .clear-btn {
+    padding: 14px 0;
     font-size: 16px;
   }
 }
-.form-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
+
 </style>

@@ -28,7 +28,7 @@ export default {
     </div>
 
     <MyDictionaries v-if="activeTab === 'myDictionaries'" :userId="userId" />
-    <ReadyDictionaries v-if="activeTab === 'readyDictionaries'" :userId="userId" />
+    <ReadyDictionaries v-if="activeTab === 'readyDictionaries'" :userId="userId"/>
   </div>
 </template>
 

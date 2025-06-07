@@ -330,29 +330,9 @@ button:hover {
   cursor: not-allowed;
   color: #777;
 }
-
-@media (max-width: 1024px) {
-  .dictionaries-wrapper {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .columns-container {
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .dictionary-column {
-    max-height: 30vh;
-  }
-}
-
-@media (max-width: 600px) {
-  button {
-    font-size: 14px;
-    padding: 6px;
   }
 }
 </style>

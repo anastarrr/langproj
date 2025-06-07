@@ -9,8 +9,8 @@ const auth = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, 'your-secret-key');
-        const user = await User.findByPk(decoded.id);
+        const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        const user = await User.findByPk(decoded.userId);
 
         if (!user) {
             return res.status(404).json({ message: 'Пользователь не найден' });

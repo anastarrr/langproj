@@ -4,6 +4,7 @@ import InputForm from "@/components/InputForm.vue";
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import api from "@/api.js";
 
 export default {
   components: { InputForm, ButtonGeneral },
@@ -14,12 +15,12 @@ export default {
 
     const login = async () => {
       try {
-        const response = await axios.post('http://localhost:3001/api/auth/', {
+        const response = await api.post('/auth/', {
           email: email.value,
           password: password.value
         });
 
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.accessToken);
         localStorage.setItem('userId', response.data.userId);
         router.push('/profile');
       } catch (error) {

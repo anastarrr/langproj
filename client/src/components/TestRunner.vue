@@ -241,6 +241,7 @@ export default {
 
         if (this.shuffledWords.length === 0) {
           this.testFinished = true;
+          this.saveResultsToServer();
         }
       }
     }

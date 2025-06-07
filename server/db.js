@@ -1,18 +1,19 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+import path from 'path';
 import mysql2 from 'mysql2';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
 
 const sequelize = new Sequelize(
-    process.env.DB_NAME || 'langproj',
-    process.env.DB_USER || 'languser',
-    process.env.DB_PASSWORD || 'FGREXA6Qastar',
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-        host: process.env.DB_HOST || 'localhost',
+        host: process.env.DB_HOST,
         dialect: 'mysql',
         dialectModule: mysql2,
-        port: process.env.DB_PORT || 3306,
+        port: process.env.DB_PORT,
         pool: {
             max: 5,
             min: 0,

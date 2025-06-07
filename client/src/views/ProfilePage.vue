@@ -45,17 +45,17 @@ export default {
       selectedDictionaryName: '',
       loadingDetails: false,
       showModal: false,
+      showLogoutConfirm: false,
     };
   },
   async mounted() {
     await this.loadUser();
-    await this.loadTestSummary();
   },
   methods: {
     async loadUser() {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3001/api/auth/api/profile', {
+        const response = await axios.get('http://localhost:3001/api/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -70,7 +70,7 @@ export default {
     async saveProfile() {
       try {
         const token = localStorage.getItem('token');
-        await axios.patch('http://localhost:3001/api/auth/api/profile', this.user, {
+        await axios.patch('http://localhost:3001/api/auth/profile', this.user, {
           headers: {Authorization: `Bearer ${token}`}
         });
         alert('Данные успешно обновлены!');
@@ -100,6 +100,16 @@ export default {
         this.loadingResults = false;
       }
     },
+    async confirmLogout() {
+      try {
+        await axios.post('http://localhost:3001/api/auth/logout');
+        localStorage.removeItem('token');
+        this.$router.push('/');
+      } catch (error) {
+        console.error('Ошибка при выходе:', error);
+        alert('Не удалось выйти из аккаунта');
+      }
+    },
     async loadTestDetails(dictionaryId, dictionaryName) {
       this.selectedDictionaryId = dictionaryId;
       this.selectedDictionaryName = dictionaryName;
@@ -127,7 +137,10 @@ export default {
 <template>
   <div class="profile-page">
     <section class="form-card">
-      <h3 class="section-title">Профиль пользователя</h3>
+      <div class="section-header">
+        <h3 class="section-title">Профиль пользователя</h3>
+        <button @click="showLogoutConfirm = true" class="logout-button">Выйти</button>
+      </div>
       <b-row class="gy-3">
         <b-col cols="12">
           <b-form-group label="Фамилия">
@@ -223,6 +236,17 @@ export default {
       </template>
     </b-modal>
   </div>
+  <b-modal
+      id="confirm-logout-modal"
+      v-model="showLogoutConfirm"
+      title="Подтверждение выхода"
+      ok-title="Выйти"
+      cancel-title="Отмена"
+      @ok="confirmLogout"
+  >
+    <p>Вы уверены, что хотите выйти из аккаунта?</p>
+  </b-modal>
+
 </template>
 
 <style scoped>
@@ -347,6 +371,106 @@ export default {
   font-weight: 600;
   text-align: center;
 }
+.logout-button {
+  background-color: #f44336;
+  color: #fbe3d9;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 800px) {
+  .profile-page {
+    flex-direction: column;
+    padding: 30px 10px;
+  }
+
+  .form-card,
+  .results-card {
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .logout-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .save-btn-container {
+    justify-content: center;
+  }
+
+  .save-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .summary-table,
+  .details-table {
+    font-size: 13px;
+  }
+
+  .summary-table thead,
+  .details-table thead {
+    display: none;
+  }
+
+  .summary-table tr,
+  .details-table tr {
+    display: block;
+    margin-bottom: 15px;
+    background-color: #1a1b5d;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .summary-table td,
+  .details-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .summary-table td:last-child,
+  .details-table td:last-child {
+    border-bottom: none;
+  }
+
+  .summary-table td::before,
+  .details-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+  }
+
+  .clickable-row {
+    cursor: pointer;
+  }
+}
+
 </style>
 
 <style>
@@ -357,4 +481,5 @@ export default {
   color: #fbe3d9 !important;
   border: none !important;
 }
+
 </style>
