@@ -36,7 +36,7 @@ export default {
       }
 
       try {
-        const response = await axios.post('http://localhost:3001/api/auth/registration', {
+        const response = await axios.post('/api/auth/registration', {
           lastname: this.lastname,
           name: this.name,
           email: this.email,

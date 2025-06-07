@@ -55,7 +55,7 @@ export default {
     async loadUser() {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3001/api/auth/profile', {
+        const response = await axios.get('/api/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -70,7 +70,7 @@ export default {
     async saveProfile() {
       try {
         const token = localStorage.getItem('token');
-        await axios.patch('http://localhost:3001/api/auth/profile', this.user, {
+        await axios.patch('/api/auth/profile', this.user, {
           headers: {Authorization: `Bearer ${token}`}
         });
         alert('Данные успешно обновлены!');
@@ -87,7 +87,7 @@ export default {
         const userId = this.user.id || this.user.userId;
         if (!userId) throw new Error('Не найден userId для загрузки результатов');
 
-        const response = await axios.get(`http://localhost:3001/api/test-results/summary/${userId}`, {
+        const response = await axios.get(`/api/test-results/summary/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -102,7 +102,7 @@ export default {
     },
     async confirmLogout() {
       try {
-        await axios.post('http://localhost:3001/api/auth/logout');
+        await axios.post('/api/auth/logout');
         localStorage.removeItem('token');
         this.$router.push('/');
       } catch (error) {
@@ -119,7 +119,7 @@ export default {
       try {
         const token = localStorage.getItem('token');
         const userId = this.user.id || this.user.userId;
-        const response = await axios.get(`http://localhost:3001/api/test-results/details/${userId}/${dictionaryId}`, {
+        const response = await axios.get(`/api/test-results/details/${userId}/${dictionaryId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
