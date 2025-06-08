@@ -30,7 +30,11 @@ router.post('/', async (req, res) => {
         res.status(201).json({ id: dictionaryId, name, words });
     } catch (err) {
         console.error('Ошибка сервера:', err);
-        res.status(500).json({ message: 'Ошибка сервера' });
+        res.status(500).json({
+            error: 'Ошибка сервера',
+            message: error.message,
+            stack: error.stack
+        });
     }
 });
 
@@ -43,7 +47,11 @@ router.get('/', async (req, res) => {
         res.json(dictionaries);
     } catch (err) {
         console.error('Ошибка при получении словарей:', err);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({
+            error: 'Ошибка сервера',
+            message: error.message,
+            stack: error.stack
+        });
     }
 });
 
@@ -76,7 +84,11 @@ router.delete('/:id', async (req, res) => {
         res.status(200).json({ message: 'Словарь удалён' });
     } catch (err) {
         console.error('Ошибка при удалении словаря:', err);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({
+            error: 'Ошибка сервера',
+            message: error.message,
+            stack: error.stack
+        });
     }
 });
 
@@ -122,7 +134,11 @@ router.put('/:id', async (req, res) => {
     } catch (error) {
         await t.rollback();
         console.error('Ошибка при обновлении словаря:', error);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({
+            error: 'Ошибка сервера',
+            message: error.message,
+            stack: error.stack
+        });
     }
 });
 
@@ -134,7 +150,11 @@ router.get('/ready-dictionaries', async (req, res) => {
         res.json(dictionaries);
     } catch (error) {
         console.error('Ошибка при чтении JSON:', error);
-        res.status(500).json({ error: 'Ошибка загрузки словарей' });
+        res.status(500).json({
+            error: 'Ошибка сервера',
+            message: error.message,
+            stack: error.stack
+        });
     }
 });
 
