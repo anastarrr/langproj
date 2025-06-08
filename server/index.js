@@ -8,7 +8,11 @@ import testResultsRoutes from './routes/testResults.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import path from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
 
@@ -27,14 +31,12 @@ app.use('/api/dictionaries', dictionaryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/test-results', testResultsRoutes);
 
-app.use(express.static(path.join(process.cwd(), 'server/public')));
-
 app.use((req, res, next) => {
     if (req.method !== 'GET' || req.path.startsWith('/api')) {
         return next();
     }
 
-    res.sendFile(path.join(process.cwd(), 'server/public/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 const PORT = process.env.PORT || 3001;
