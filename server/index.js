@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 
+
 dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
 
 const app = express();
@@ -25,6 +26,16 @@ app.use(express.json());
 app.use('/api/dictionaries', dictionaryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/test-results', testResultsRoutes);
+
+app.use(express.static(path.join(process.cwd(), 'server/public')));
+
+app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/api')) {
+        return next();
+    }
+
+    res.sendFile(path.join(process.cwd(), 'server/public/index.html'));
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
