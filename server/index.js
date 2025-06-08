@@ -31,14 +31,13 @@ app.use('/api/dictionaries', dictionaryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/test-results', testResultsRoutes);
 
-app.use((req, res, next) => {
-    if (req.method !== 'GET' || req.path.startsWith('/api')) {
-        return next();
-    }
+const publicPath = path.join(__dirname, 'public');
 
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+app.use(express.static(publicPath));
+
+app.get(/^\/(?!api).*/, (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
-
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Сервер запущен на ${PORT}`);
