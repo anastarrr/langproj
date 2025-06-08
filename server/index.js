@@ -19,8 +19,18 @@ dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
 const app = express();
 
 app.use(cookieParser());
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://langproj-production.up.railway.app'
+];
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
