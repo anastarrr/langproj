@@ -69,13 +69,13 @@ export default {
 
       try {
         if (this.currentDictionary.id) {
-          await axios.put(`http://localhost:3001/api/dictionaries/${this.currentDictionary.id}`, {
+          await axios.put(`/api/dictionaries/${this.currentDictionary.id}`, {
             name: this.currentDictionary.name,
             words: plainWords,
             userId: this.userId
           });
         } else {
-          await axios.post('http://localhost:3001/api/dictionaries', {
+          await axios.post('/api/dictionaries', {
             userId: this.userId,
             name: this.currentDictionary.name,
             words: plainWords
@@ -89,7 +89,7 @@ export default {
     },
     async loadDictionaries() {
       try {
-        const response = await axios.get(`http://localhost:3001/api/dictionaries?userId=${this.userId}`);
+        const response = await axios.get(`/api/dictionaries?userId=${this.userId}`);
         this.dictionaries = response.data;
       } catch (error) {
         console.error('Ошибка при загрузке словарей:', error);
@@ -98,7 +98,7 @@ export default {
     async deleteDictionary(dictionaryId) {
       if (!confirm("Вы уверены, что хотите удалить словарь?")) return;
       try {
-        await axios.delete(`http://localhost:3001/api/dictionaries/${dictionaryId}?userId=${this.userId}`);
+        await axios.delete(`/api/dictionaries/${dictionaryId}?userId=${this.userId}`);
         this.loadDictionaries();
       } catch (error) {
         console.error('Ошибка при удалении словаря:', error);

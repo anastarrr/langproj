@@ -134,7 +134,7 @@ export default {
         is_correct: r.correct
       }));
 
-      fetch('http://localhost:3001/api/test-results', {
+      fetch('/api/test-results', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
