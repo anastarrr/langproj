@@ -88,4 +88,23 @@ div h3{
 .link:hover{
   color: rgba(154,153,152)!important;
 }
+@media (max-width: 500px) {
+  div {
+    padding: 12px 25px;
+  }
+  span {
+    padding: 12px;
+    font-size: 16px;
+  }
+  div h1 {
+    font-size: 26px;
+  }
+  .form-login {
+    padding: 20px 30px;
+    width: 95%;
+  }
+  .reg {
+    font-size: 14px;
+  }
+}
 </style>

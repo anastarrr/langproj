@@ -60,96 +60,63 @@ export default {
   <div class="reg-page">
     <div class="top-menu">
       <button class="back-btn" @click="$router.go(-1)">
-        &lt; Назад
+        Назад
       </button>
     </div>
     <div class="reg-form">
       <b-container>
         <b-row>
           <b-col class="reg-col">
-            <b-form-group
-                class="reg-group"
-                label-for="input-lastname"
-            >
+            <b-form-group class="reg-group" label-for="input-lastname">
               <template #label>
                 <div class="custom-label">
                   Фамилия
-                  <span class="need-circle"></span>
                 </div>
               </template>
-              <b-form-input class="reg-input" id="input-lastname" v-model="lastname"/>
+              <b-form-input class="reg-input" id="input-lastname" v-model="lastname" />
             </b-form-group>
-            <b-form-group
-                class="reg-group"
-                label-for="input-name"
-            >
+
+            <b-form-group class="reg-group" label-for="input-name">
               <template #label>
                 <div class="custom-label">
                   Имя
-                  <span class="need-circle"></span>
                 </div>
               </template>
-              <b-form-input class="reg-input" id="input-name" v-model="name"/>
+              <b-form-input class="reg-input" id="input-name" v-model="name" />
             </b-form-group>
-            <b-form-group
-                class="reg-group"
-                label-for="input-email"
-            >
+
+            <b-form-group class="reg-group" label-for="input-email">
               <template #label>
                 <div class="custom-label">
                   Почта
-                  <span class="need-circle"></span>
                 </div>
               </template>
-              <b-form-input class="reg-input" id="input-email" v-model="email"/>
-            </b-form-group>
-
-          </b-col>
-          <b-col class="reg-col">
-
-            <b-form-group
-                class="reg-group"
-                label="Возраст"
-                label-for="input-age"
-            >
-              <b-form-input class="reg-input" id="input-age" v-model="age" type="number"/>
-            </b-form-group>
-            <b-form-group
-                class="reg-group"
-                label="Пол"
-                label-for="input-gender"
-            >
-              <b-form-input class="reg-input" v-model="gender" :options="genders" id="input-gender"/>
+              <b-form-input class="reg-input" id="input-email" v-model="email" />
             </b-form-group>
           </b-col>
-        </b-row>
-        <b-row class="mt-5">
+
           <b-col class="reg-col">
-            <b-form-group
-                class="reg-group"
-                label-for="input-password"
-            >
+            <b-form-group class="reg-group" label-for="input-password">
               <template #label>
                 <div class="custom-label">
                   Пароль
-                  <span class="need-circle"></span>
                 </div>
               </template>
-              <b-form-input class="reg-input" id="input-password" v-model="password" type="password"/>
+              <b-form-input class="reg-input" id="input-password" v-model="password" type="password" />
             </b-form-group>
-            <b-form-group
-                class="reg-group mb-0"
-                label-for="input-confirm-password"
-            >
+
+            <b-form-group class="reg-group mb-0" label-for="input-confirm-password">
               <template #label>
                 <div class="custom-label">
                   Подтвердите пароль
-                  <span class="need-circle"></span>
                 </div>
               </template>
-              <b-form-input class="reg-input" id="input-confirm-password" v-model="confirmPassword" type="password"/>
+              <b-form-input class="reg-input" id="input-confirm-password" v-model="confirmPassword" type="password" />
             </b-form-group>
           </b-col>
+        </b-row>
+
+        <b-row class="mt-5">
           <b-col class="reg-col to-right-bottom">
             <button-log-in class="reg-button" @click.native="registerUser">
               <span>Зарегистрироваться</span>
@@ -160,6 +127,7 @@ export default {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .reg-page {
@@ -218,13 +186,6 @@ export default {
   align-items: center;
   margin-bottom: 10px;
 }
-.need-circle {
-  height: 20px;
-  width: 20px;
-  background-color: #1A1B5D;
-  display: inline-block;
-  border-radius: 20px;
-}
 .back-btn {
   background: none;
   border: none;
@@ -237,4 +198,36 @@ export default {
   align-items: center;
   column-gap: 10px;
 }
+@media (max-width: 700px) {
+  .reg-input {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+    min-width: 150px;
+  }
+
+  .reg-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .reg-page {
+    padding: 20px 0;
+  }
+
+  .reg-form {
+    width: 96vw;
+    height: 96vh;
+    padding: 20px 10px;
+    margin: 10px auto;
+    margin-bottom: 30px;
+  }
+
+  .reg-col {
+    padding: 0 10px;
+  }
+}
+
 </style>
