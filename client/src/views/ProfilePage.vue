@@ -141,7 +141,7 @@ export default {
         <h3 class="section-title">Профиль пользователя</h3>
         <button @click="showLogoutConfirm = true" class="logout-button">Выйти</button>
       </div>
-      <b-row class="gy-3">
+      <b-row class="gy-1">
         <b-col cols="12">
           <b-form-group label="Фамилия">
             <b-form-input v-model="user.lastname" class="profile-input" />
@@ -393,7 +393,7 @@ export default {
 @media (max-width: 800px) {
   .profile-page {
     flex-direction: column;
-    padding: 30px 10px;
+    padding: 60px 10px 10px;
   }
 
   .form-card,
@@ -404,13 +404,14 @@ export default {
   }
 
   .section-header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 10px;
   }
 
   .logout-button {
-    width: 100%;
+    width: auto;
+    align-self: flex-end;
     padding: 10px;
     font-size: 15px;
   }
